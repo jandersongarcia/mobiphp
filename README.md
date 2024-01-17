@@ -136,4 +136,4 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
 
     **Exemplo**: "components" => [ _'Novocomponente'_ ],
 
-  - Após adicionar, abra o arquivo **Novapagina.view.php** e insira o componente usando o comando **$mobi->component([ _'novapagina'_ ])** no local desejado para que o componente seja exibido.
+  - Após adicionar, abra o arquivo **Novapagina.view.php** e insira o componente usando o comando **$mobi->components([ _'novapagina'_ ])** no local desejado para que o componente seja exibido.
