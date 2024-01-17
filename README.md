@@ -143,5 +143,5 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
 - **app**
   - **modules**
     - **Novomodulo**: pasta do módulo
-    - **Novomodulo.controller.php**: scripts de controle
-    - **Novomodulo.modal.php**: página de modal
+      - **Novomodulo.controller.php**: scripts de controle
+      - **Novomodulo.modal.php**: página de modal
