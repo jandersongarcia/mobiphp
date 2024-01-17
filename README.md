@@ -125,13 +125,13 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
 - Utilize o comando: **composer mobi-create-component nome-do-componente**
 - Isso criará o componente automaticamente dentro da pasta **components**.
 
-  # Estrutura do Componente Criado
-  - **app**
-     - **components**
-        - **Novocomponente**: pasta do componente
-          - **Novocomponente.controller.php**: scripts de controle do componente
-          - **Novocomponente.css**: folha de estilo CSS
-          - **Novocomponente.js**: arquivo JavaScript do componente
-          - **Novocomponente.view.php**: página de visualização do componente
+### Estrutura do Componente Criado
+- **app**
+    - **components**
+      - **Novocomponente**: pasta do componente
+        - **Novocomponente.controller.php**: scripts de controle do componente
+        - **Novocomponente.css**: folha de estilo CSS
+        - **Novocomponente.js**: arquivo JavaScript do componente
+        - **Novocomponente.view.php**: página de visualização do componente
 
-  ##
+##
