@@ -8,7 +8,15 @@ O Mobiphp é um framework em PHP com JavaScript que estou desenvolvendo no intui
 
 Certifique-se de que sua máquina atenda aos seguintes pré-requisitos antes de começar:
 
-- [Composer](https://getcomposer.org/): O Composer é necessário para gerenciar as dependências do Mobiphp.
+1. **PHP**: O Mobiphp é um framework PHP, portanto, é necessário ter o PHP instalado em sua máquina. Recomendamos o uso de uma versão PHP 7.2 ou superior. Você pode baixar o PHP em [php.net](https://www.php.net/).
+
+2. **Banco de Dados**:
+
+   - Se você optar por usar o MySQL, certifique-se de ter um servidor MySQL instalado e configurado. Você pode obter o MySQL em [mysql.com](https://www.mysql.com/).
+
+   - Se preferir o PostgreSQL, instale e configure um servidor PostgreSQL. Faça o download do PostgreSQL em [postgresql.org](https://www.postgresql.org/).
+
+3. **Composer**: O Composer é uma ferramenta essencial para gerenciar as dependências do Mobiphp. Certifique-se de tê-lo instalado em sua máquina. Você pode baixar o Composer em [getcomposer.org](https://getcomposer.org/).
 
 ## Estrutura de Pastas
 
