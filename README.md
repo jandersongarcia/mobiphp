@@ -8,15 +8,15 @@ O Mobiphp é um framework em PHP com JavaScript desenvolvido para simplificar a 
 
 Antes de começar, certifique-se de que sua máquina atenda aos seguintes pré-requisitos:
 
-1. **PHP**: O Mobiphp é um framework PHP, portanto, é necessário ter o PHP instalado, recomendando-se a versão 7.2 ou superior. Baixe o PHP em [php.net](https://www.php.net/).
+1. **PHP**: O Mobiphp é um framework PHP, portanto, é necessário ter o PHP instalado, recomendando-se a versão 7.2 ou superior. [Baixe o PHP](https://www.php.net/).
 
 2. **Banco de Dados**:
 
-   - Se optar pelo MySQL, assegure-se de ter um servidor MySQL instalado e configurado. Baixe o MySQL em [mysql.com](https://www.mysql.com/).
+   - Se optar pelo MySQL, assegure-se de ter um servidor MySQL instalado e configurado. [Baixe o MySQL](https://www.mysql.com/).
 
-   - Se preferir o PostgreSQL, instale e configure um servidor PostgreSQL. Faça o download do PostgreSQL em [postgresql.org](https://www.postgresql.org/).
+   - Se preferir o PostgreSQL, instale e configure um servidor PostgreSQL. [Baixe o PostgreSQL](https://www.postgresql.org/).
 
-3. **Composer**: O Composer é uma ferramenta essencial para gerenciar as dependências do Mobiphp. Certifique-se de tê-lo instalado em sua máquina. Baixe o Composer em [getcomposer.org](https://getcomposer.org/).
+3. **Composer**: O Composer é uma ferramenta essencial para gerenciar as dependências do Mobiphp. [Baixe o Composer](https://getcomposer.org/).
 
 ## Estrutura de Pastas
 
@@ -85,6 +85,8 @@ O Mobiphp faz uso das seguintes bibliotecas e dependências, algumas incorporada
 
 - **bootstrap**: Framework front-end para design responsivo, opcionalmente incorporado no Mobiphp. [twbs/bootstrap](https://github.com/twbs/bootstrap).
 
+- **bootstrap-icons**: Conjunto de ícones para uso com Bootstrap. [twbs/bootstrap-icons](https://github.com/twbs/bootstrap-icons).
+
 - **page.js**: Biblioteca para roteamento no lado do cliente, facilitando a criação de Single Page Applications (SPAs). [visionmedia/page.js](https://github.com/visionmedia/page.js).
 
 - **jquery**: Biblioteca JavaScript para manipulação do DOM, opcionalmente incorporada no Mobiphp. [jquery/jquery](https://github.com/jquery/jquery)
@@ -132,23 +134,4 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
           - **Novocomponente.js**: arquivo JavaScript do componente
           - **Novocomponente.view.php**: página de visualização do componente
 
-  ## Configurando
-
- o Componente em uma Página
-  - Para que o componente funcione perfeitamente, adicione o nome do componente à array **component** no arquivo **Novapagina.controller.php**.
-    **Exemplo**: "components" => [ _'Novocomponente'_ ],
-  - Em seguida, no arquivo **Novapagina.view.php**, insira o componente usando o comando **$mobi->components([ _'novapagina'_ ])** no local desejado para exibi-lo.
-
-## Criação de Módulos
-
-Os módulos são úteis para interação com o backend via requisição.
-
-- Utilize o comando: **composer mobi-create-module nome-do-modulo**
-- Isso criará o módulo automaticamente dentro da pasta **modules**.
-
-  ## Estrutura do Módulo Criado
-  - **app**
-     - **modules**
-        - **Novomodulo**: pasta do módulo
-          - **Novomodulo.controller.php**: scripts de controle
-          - **Novomodulo.modal.php**: página de modal
+  ##
