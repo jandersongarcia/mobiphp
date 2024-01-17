@@ -4,6 +4,12 @@
 
 O Mobiphp é um framework em PHP com JavaScript que estou desenvolvendo no intuito de facilitar a criação rápida de aplicações web completas ou ser utilizado como backend. Esta documentação fornece informações essenciais para começar a desenvolver com o Mobiphp.
 
+## Pré-requisitos
+
+Certifique-se de que sua máquina atenda aos seguintes pré-requisitos antes de começar:
+
+- [Composer](https://getcomposer.org/): O Composer é necessário para gerenciar as dependências do Mobiphp.
+
 ## Estrutura de Pastas
 
 - **app**: Contém os componentes principais da aplicação.
@@ -62,6 +68,22 @@ O Mobiphp é um framework em PHP com JavaScript que estou desenvolvendo no intui
 - **package-lock.json**, **package.json**: Configurações do Node.js.
 
 - **robots.txt**: Arquivo de exclusão de robôs.
+
+## Dependências e Bibliotecas
+
+O Mobiphp faz uso das seguintes bibliotecas e dependências, algumas das quais estão incorporadas diretamente no framework:
+
+- **matthiasmullie**: Uma biblioteca PHP para manipulação de arquivos e diretórios. [matthiasmullie/github](https://github.com/matthiasmullie).
+
+- **bootstrap**: Um framework front-end para design responsivo. Embora seja incorporado no Mobiphp, seu uso é opcional. [twbs/bootstrap](https://github.com/twbs/bootstrap).
+
+- **page.js**: Uma biblioteca para roteamento no lado do cliente, facilitando a criação de Single Page Applications (SPAs).  [visionmedia/page.js](https://github.com/visionmedia/page.js).
+
+- **jquery**: Uma biblioteca JavaScript para manipulação do DOM. Assim como o Bootstrap, o jQuery é incluído no Mobiphp, mas seu uso é opcional. [jquery/jquery](https://github.com/jquery/jquery)
+
+Ao utilizar o Mobiphp, você tem a flexibilidade de incorporar o Bootstrap e o jQuery em seus projetos ou substituí-los por outras bibliotecas de sua preferência.
+
+Certifique-se de revisar a documentação oficial de cada biblioteca para obter informações detalhadas sobre sua utilização e configuração.
 
 ## Instalação
 
