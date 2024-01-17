@@ -97,15 +97,19 @@ file_put_contents($caminhoArquivoRotas, json_encode($rotas, JSON_PRETTY_PRINT));
 echo "Adicionando a rota " . colorizar("'/$nomeRota'", 36) . " à lista: " . colorizar("[OK]", 32) . "\n";
 
 // Criar arquivos dentro da pasta recém-criada
+
 // Página View
 file_put_contents("app/pages/$nomePagina/$nomePagina.view.php", "<h1> View da página $nomePagina</h1>");
 echo "Visualização da página $nomePagina: " . colorizar("[OK]", 32) . "\n";
+
 // Página Controller
-file_put_contents("app/pages/$nomePagina/$nomePagina.controller.php", "<?php\n\n// Controlador para $nomePagina\n\n" . '$controller = [' . "\n    // Título da Página.\n" . '    "title" => "' . $nomePagina . '",' . "\n\n    // Declarar os componentes que serão usados na página.\n" . '    "components" => [],' . "\n];\n");
+file_put_contents("app/pages/$nomePagina/$nomePagina.controller.php", "<?php\n\n // Controlador para $nomePagina \n\nclass $nomePagina {\n\n    public ".'$title'." = '$nomePagina';\n\n    // Declarar os componentes que serão usados na página.\n    public ".'$components'." = [];\n\n}");
 echo "Controlador da página $nomePagina: " . colorizar("[OK]", 32) . "\n";
+
 // Folha de estilos CSS
 file_put_contents("app/pages/$nomePagina/$nomePagina.css", "/* Estilos CSS para $nomePagina */");
 echo "Arquivo CSS para $nomePagina: " . colorizar("[OK]", 32) . "\n";
+
 // JS
 file_put_contents("app/pages/$nomePagina/$nomePagina.js", "// Scripts JavaScript para $nomePagina");
 echo "Arquivo JavaScript para $nomePagina: " . colorizar("[OK]", 32) . "\n";

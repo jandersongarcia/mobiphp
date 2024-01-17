@@ -50,7 +50,7 @@ if (mkdir("app/components/$nomeComponent", 0777, true)) {
 file_put_contents("app/components/$nomeComponent/$nomeComponent.view.php", "<h2> View do componente $nomeComponent</h2>");
 echo "Página View do componente $nomeComponent: " . colorizar("[OK]", 32) . "\n";
 // Página Controller
-file_put_contents("app/components/$nomeComponent/$nomeComponent.controller.php", "<?php\n\n// Controlador do componente $nomeComponent\n\n");
+file_put_contents("app/components/$nomeComponent/$nomeComponent.controller.php", "<?php\n\n// Controlador do componente $nomeComponent\n\nclass $nomeComponent {\n\n}");
 echo "Controlador do componente $nomeComponent: " . colorizar("[OK]", 32) . "\n";
 // Folha de estilos CSS
 file_put_contents("app/components/$nomeComponent/$nomeComponent.css", "/* Estilos CSS para $nomeComponent */");

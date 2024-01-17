@@ -11,6 +11,13 @@ if (file_exists("app/controllers/$ctrl")) {
     if ($app->checkHeader() || APP['mode'] == 0) {
         // Inclui o arquivo de controller
         require_once("app/controllers/$ctrl");
+        if (class_exists("$ctrl")) {
+            $$ctrl = new $ctrl;
+        } else {
+            // Trate o caso em que a classe não existe
+            $errorMessage = "Classe $ctrl não encontrada.";
+            error_log($errorMessage, 3, 'caminho/para/seu/arquivo/error.log');
+        }
     } else {
         // Mensagem de erro se o acesso ao controller for negado
         $msg = [

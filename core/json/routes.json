@@ -4,6 +4,11 @@
             "path": "\/",
             "controller": "Main",
             "method": "ALL"
+        },
+        {
+            "path": "\/Login",
+            "controller": "Login",
+            "method": "ALL"
         }
     ]
 }
