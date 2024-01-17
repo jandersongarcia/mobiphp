@@ -95,10 +95,45 @@ Certifique-se de revisar a documentação oficial de cada biblioteca para obter 
 
 ## Instalação
 
-Para começar a usar o Mobiphp, siga os passos de instalação descritos no arquivo `README.md` no repositório GitHub.
+- Faça a instalação inicial do Mobiphp baixando o pacote e descompactando-o no diretório PHP desejado.
 
-## Contribuindo
+## Criação de Páginas
+- O Mobiphp simplifica a criação de páginas de maneira automática através do Composer.
+- Utilize o comando: **composer mobi-create-page nome-da-pagina nome-da-rota**
+- Ao executar este comando, a pasta da página será criada e a rota será configurada em core/json/routes.json.
+- A estrutura da pasta criada é a seguinte:
 
-Se você deseja contribuir para o desenvolvimento do Mobiphp, consulte o arquivo `CONTRIBUTING.md` para obter mais informações.
+  ## Estrutura da Página Criada
+  - **app**
+     - **pages**
+        - **Novapagina**: pasta da página
+        - **Novapagina.controller.php**: scripts de controle da página
+        - **Novapagina.css**: folha de estilo CSS
+        - **Novapagina.js**: arquivo JavaScript da página
+        - **Novapagina.view.php**: página de visualização
 
----
+- Para **excluir uma página**, utilize o comando **composer mobi-delete-page nome-da-pagina**.
+
+## Criação de Componentes
+
+A utilização de componentes oferece uma maneira simples e eficiente de reutilizar código em sua aplicação. Para criar um componente, basta seguir os passos abaixo:
+
+- Utilize o comando: **composer mobi-create-component nome-do-componente**
+- Com a execução deste comando, o componente será criado automaticamente dentro da pasta **components**.
+
+  ## Estrutura do Componente Criado
+  - **app**
+     - **components**
+        - **Novocomponente**: pasta do componente
+        - **Novocomponente.controller.php**: scripts de controle do componente
+        - **Novocomponente.css**: folha de estilo CSS
+        - **Novocomponente.js**: arquivo JavaScript do componente
+        - **Novocomponente.view.php**: página de visualização do componente
+
+  ## Configurando o Componente em uma Página
+  - Para que o componente funcione perfeitamente na aplicação, siga as etapas abaixo:
+  - Supondo que você deseje inserir o **Novocomponente** dentro da **Novapagina**, abra o arquivo **Novapagina.controller.php** e adicione o nome do componente à array **component**.
+
+    **Exemplo**: "components" => [ _'Novocomponente'_ ],
+
+  - Após adicionar, abra o arquivo **Novapagina.view.php** e insira o componente usando o comando **$mobi->component([ _'novapagina'_ ])** no local desejado para que o componente seja exibido.
