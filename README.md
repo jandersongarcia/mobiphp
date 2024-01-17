@@ -107,14 +107,14 @@ O Mobiphp simplifica a criação de páginas automaticamente através do Compose
 - Isso criará a pasta da página e configurará a rota em core/json/routes.json.
 - A estrutura da pasta criada é a seguinte:
 
-  ## Estrutura da Página Criada
-  - **app**
-     - **pages**
-        - **Novapagina**: pasta da página
-          - **Novapagina.controller.php**: scripts de controle da página
-          - **Novapagina.css**: folha de estilo CSS
-          - **Novapagina.js**: arquivo JavaScript da página
-          - **Novapagina.view.php**: página de visualização
+### Estrutura da Página Criada
+- **app**
+    - **pages**
+      - **Novapagina**: pasta da página
+        - **Novapagina.controller.php**: scripts de controle da página
+        - **Novapagina.css**: folha de estilo CSS
+        - **Novapagina.js**: arquivo JavaScript da página
+        - **Novapagina.view.php**: página de visualização
 
 - Para **excluir uma página**, utilize o comando **composer mobi-delete-page nome-da-pagina**.
 
@@ -134,4 +134,14 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
         - **Novocomponente.js**: arquivo JavaScript do componente
         - **Novocomponente.view.php**: página de visualização do componente
 
-##
+## Criação de Módulos
+- Os módulos são úteis para interação com o backend via requisição.
+- Utilize o comando: **composer mobi-create-module nome-do-modulo**
+- Os arquivos do módulo serão criados dentro do diretório modules.
+
+### Estrutura do Módulo Criado
+- **app**
+  - **modules**
+    - **Novomodulo**: pasta do módulo
+    - **Novomodulo.controller.php**: scripts de controle
+    - **Novomodulo.modal.php**: página de modal
