@@ -1,0 +1,9 @@
+{
+    "routes": [
+        {
+            "path": "\/",
+            "controller": "Main",
+            "method": "ALL"
+        }
+    ]
+}
