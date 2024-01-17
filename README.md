@@ -125,7 +125,7 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
 - Utilize o comando: **composer mobi-create-component nome-do-componente**
 - Isso criará o componente automaticamente dentro da pasta **components**.
 
-  ## Estrutura do Componente Criado
+  # Estrutura do Componente Criado
   - **app**
      - **components**
         - **Novocomponente**: pasta do componente
