@@ -9,7 +9,8 @@
         "mobi-delete-page" : "php core/php/composer/delete-page.php",
         "mobi-create-component" : "php core/php/composer/create-component.php",
         "mobi-delete-component" : "php core/php/composer/delete-component.php",
-        "mobi-create-template-login" : "php core/php/composer/create-template-login.php"
+        "mobi-create-module" : "php core/php/composer/create-module.php",
+        "mobi-delete-module" : "php core/php/composer/delete-module.php"
     },
     "require": {
         "matthiasmullie/minify": "^1.3",
