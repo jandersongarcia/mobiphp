@@ -9,6 +9,11 @@
             "path": "\/Login",
             "controller": "Login",
             "method": "ALL"
+        },
+        {
+            "path": "\/Forgotpass",
+            "controller": "Forgotpass",
+            "method": "ALL"
         }
     ]
 }

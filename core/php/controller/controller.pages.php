@@ -93,15 +93,6 @@ if ($app->checkHeader() || APP['mode'] == 0) {
             $minifier->add($allStyles);
             echo "<style>{$minifier->minify()}</style>";
 
-            foreach($components as $component){
-                // Trata o nome do componente
-                $component = ucfirst(strtolower($component));
-                $caminho = "app/components/$component/$component";
-                if(file_exists("$caminho.view.php")){
-                    require_once("$caminho.view.php");
-                }
-            }
-
             // Carrega a página
             require_once($path);
 
