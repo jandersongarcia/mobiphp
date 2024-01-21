@@ -1,1 +1,2 @@
-<h1>Página Main</h1>
+<?= $mobi->components(['navbar','titlebar']) ?>
+

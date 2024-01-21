@@ -1,18 +1,18 @@
-# Mobiphp Framework
+# Mobiphp II
 
 ## Introdução
 
-O Mobiphp é um framework em PHP com JavaScript desenvolvido para simplificar a criação rápida de aplicações web completas ou servir como backend. Esta documentação fornece informações essenciais para começar a desenvolver com o Mobiphp.
+O Mobiphp é um framework em PHP com JavaScript projetado para simplificar a criação rápida de aplicações web completas ou atuar como backend. Esta documentação fornece informações essenciais para iniciar o desenvolvimento com o Mobiphp.
 
 ## Pré-requisitos
 
 Antes de começar, certifique-se de que sua máquina atenda aos seguintes pré-requisitos:
 
-1. **PHP**: O Mobiphp é um framework PHP, portanto, é necessário ter o PHP instalado, recomendando-se a versão 7.2 ou superior. [Baixe o PHP](https://www.php.net/).
+1. **PHP**: O Mobiphp é baseado em PHP; portanto, é necessário ter o PHP instalado, recomendando-se a versão 7.2 ou superior. [Baixe o PHP](https://www.php.net/).
 
 2. **Banco de Dados**:
 
-   - Se optar pelo MySQL, assegure-se de ter um servidor MySQL instalado e configurado. [Baixe o MySQL](https://www.mysql.com/).
+   - Para MySQL, certifique-se de ter um servidor MySQL instalado e configurado. [Baixe o MySQL](https://www.mysql.com/).
 
    - Se preferir o PostgreSQL, instale e configure um servidor PostgreSQL. [Baixe o PostgreSQL](https://www.postgresql.org/).
 
@@ -87,7 +87,7 @@ O Mobiphp faz uso das seguintes bibliotecas e dependências, algumas incorporada
 
 - **bootstrap-icons**: Conjunto de ícones para uso com Bootstrap. [twbs/bootstrap-icons](https://github.com/twbs/bootstrap-icons).
 
-- **page.js**: Biblioteca para roteamento no lado do cliente, facilitando a criação de Single Page Applications (SPAs). [visionmedia/page.js](https://github.com/visionmedia/page.js).
+- **navigo.js**: Biblioteca para roteamento no lado do cliente, simplificando a construção de Single Page Applications. [krasimir/navigo](https://github.com/krasimir/navigo).
 
 - **jquery**: Biblioteca JavaScript para manipulação do DOM, opcionalmente incorporada no Mobiphp. [jquery/jquery](https://github.com/jquery/jquery)
 
@@ -135,7 +135,9 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
         - **Novocomponente.view.php**: página de visualização do componente
 
 ## Criação de Módulos
-- Os módulos são úteis para interação com o backend via requisição.
+- Os
+
+ módulos são úteis para interação com o backend via requisição.
 - Utilize o comando: **composer mobi-create-module nome-do-modulo**
 - Os arquivos do módulo serão criados dentro do diretório modules.
 
@@ -145,3 +147,14 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
     - **Novomodulo**: pasta do módulo
       - **Novomodulo.controller.php**: scripts de controle
       - **Novomodulo.modal.php**: página de modal
+
+## Trabalhando com Rotas
+- Para utilizar as rotas, basta colocar o caminho dentro de um link.
+- Supondo que temos a rota 'product' para chamar em um link, ficaria assim _<a href="_**/product**_">Produto</a>_
+
+### Listar Rotas
+- Caso precise listar as rotas da sua aplicação, poderá utilizar o comando **composer mobi-list-routes** ou acessa-las diretamente no arquivo json que fica em _core/json/routes.json_.
+
+### Renomear rota
+- Para alterar o nome de uma rota, use o comando **composer mobi-rename-route rota-atual nova-rota**
+- Por exemplo: Supondo que precise alterar a rota _product_ para _register_, o comando ficaria o seguinte: **composer mobi-rename-route product register**

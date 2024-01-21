@@ -17,7 +17,7 @@ if ($argc !== 2 || empty($argv[1])) {
 }
 
 // Obter o nome da página a partir dos argumentos da linha de comando
-$nomePagina = ucfirst(strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $argv[1])));
+$nomePagina = ucfirst(strtolower(preg_replace('/[^a-zA-Z0-9_]/', '', $argv[1])));
 
 // Verificar se a página existe
 $caminhoDiretorio = "app/pages/$nomePagina";

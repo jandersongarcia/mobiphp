@@ -6,7 +6,7 @@ use MatthiasMullie\Minify;
 $routes = $app->listRoutes();
 
 // Obtém o caminho da página atual a partir da URL
-$page = "/" . ucfirst(strtolower($app->path(2)));
+$page = "/" . strtolower($app->path(2));
 
 // Verifica se o cabeçalho está presente ou se o modo do aplicativo é 0
 if ($app->checkHeader() || APP['mode'] == 0) {

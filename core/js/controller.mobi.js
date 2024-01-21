@@ -1,32 +1,51 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    let nameId;
+
     // Função para carregar scripts de forma assíncrona
     function carregarScript(url, callback) {
         var script = document.createElement('script');
         script.src = url;
         script.onload = callback;
-        script.defer = true; // Adicione esta linha
+        script.defer = true;
         document.head.appendChild(script);
     }
 
     // Função para executar scripts dinamicamente
-    function executarScripts(src) {
-        // Iterar sobre os scripts e adicioná-los ao DOM
+    function executarScripts(src, name) {
         var scriptPath = './ctrl/pages.js' + src;
+        let id = `el${nameId}`;
+        // Supondo que você tenha um script com um ID específico
+        var scriptParaRemover = document.getElementById(id);
+
+        // Verifica se o script existe antes de tentar removê-lo
+        if (scriptParaRemover) {
+            scriptParaRemover.parentNode.removeChild(scriptParaRemover);
+        }
+
         var script = document.createElement('script');
         script.src = scriptPath;
+        script.id = `el${name}`;
         document.head.appendChild(script);
+        nameId = `el${name}`;
+
+        console.log(`el${name}`);
+
     }
 
-    // Carregar o script do Page.js dinamicamente
-    carregarScript('./node_modules/page/page.js', function () {
+    // Carregar o script do Navigo dinamicamente
+    carregarScript('./node_modules/navigo/lib/navigo.js', function () {
+        let caminho = './core/json/routes.json?t=' + new Date().getTime();
+
         // Carregar as rotas do arquivo JSON
-        fetch('./core/json/routes.json')
+        fetch(caminho)
             .then(response => response.json())
             .then(data => {
                 // Configurar rotas dinamicamente
+                var router = new Navigo('/');
+
                 data.routes.forEach(route => {
-                    page(route.path, function (ctx) {
+                    router.on(route.path, function (params, query) {
                         var pagePath = './ctrl/pages' + route.path;
                         fetch(pagePath)
                             .then(response => {
@@ -37,20 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
                                 }
                             })
                             .then(html => {
-                                // Criar um novo elemento div e definir seu conteúdo HTML
                                 var newDiv = document.createElement('div');
                                 newDiv.innerHTML = html;
-
-                                // Adicionar scripts ao DOM para que sejam executados
-                                var scripts = newDiv.getElementsByTagName('script');
-
-                                // Substituir o conteúdo do elemento 'app' com o novo conteúdo
                                 document.getElementById('app').innerHTML = newDiv.innerHTML;
 
                                 // Executar os scripts dinamicamente após o carregamento total da página
-                                //window.addEventListener('load', function() {
-                                executarScripts(route.path);
-                                //});
+                                executarScripts(route.path, route.controller);
                             })
                             .catch(error => {
                                 console.error('Erro ao carregar a página:', error);
@@ -60,57 +71,39 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 // Rota genérica para lidar com páginas não encontradas
-                page('*', function (ctx) {
+                router.notFound(function () {
                     fetch('./public/error/404.php')
                         .then(response => response.text())
                         .then(html => {
-                            // Criar um novo elemento div e definir seu conteúdo HTML
                             var newDiv = document.createElement('div');
                             newDiv.innerHTML = html;
 
-                            // Adicionar scripts ao DOM para que sejam executados
-                            var scripts = newDiv.getElementsByTagName('script');
-
-                            // Substituir o conteúdo do elemento 'app' com o novo conteúdo
-                            document.getElementById('app').innerHTML = newDiv.innerHTML;
+                            var appElement = document.getElementById('app');
+                            appElement.innerHTML = newDiv.innerHTML;
 
                             // Executar os scripts dinamicamente após o carregamento total da página
-                            window.addEventListener('load', function () {
-                                executarScripts(scripts);
-                            });
+                            executarScripts('/404', 404);
                         })
                         .catch(error => console.error('Erro ao carregar a página 404:', error));
                 });
 
+                // Adicionar um ouvinte de evento para links
+                document.body.addEventListener('click', function (event) {
+                    var target = event.target;
+
+                    // Verificar se o clique foi em um link
+                    if (target.tagName === 'A' && target.getAttribute('href')) {
+                        // Impedir o comportamento padrão do link
+                        event.preventDefault();
+
+                        // Navegar para a rota especificada no atributo 'href' do link
+                        router.navigate(target.getAttribute('href'));
+                    }
+                });
+
                 // Iniciar o roteamento
-                page();
+                router.resolve();
             })
             .catch(error => console.error('Erro ao carregar as rotas:', error));
-    })
+    });
 });
-
-const mobi = {
-        
-    post: (url, data, successCallback, errorCallback) => {
-        // Simulação de uma requisição POST (substitua por sua lógica real)
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', url, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-
-        xhr.onload = () => {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                successCallback(xhr.responseText);
-            } else {
-                errorCallback(`Error: ${xhr.status} - ${xhr.statusText}`);
-            }
-        };
-
-        xhr.onerror = () => {
-            errorCallback('Network error');
-        };
-
-        const jsonData = JSON.stringify(data);
-        xhr.send(jsonData);
-        
-    }
-};

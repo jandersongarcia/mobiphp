@@ -5,8 +5,10 @@ namespace Sql;
 use PDO;
 use PDOException;
 
-class MySQL {
+class MySQL
+{
 
+    // Propriedades para armazenar detalhes da conexão e instância do PDO.
     private $host;
     private $username;
     private $password;
@@ -16,12 +18,16 @@ class MySQL {
 
     private $pdo;
 
-    function __construct() {
-        $this->configureConnection(CONN);
+    // Construtor da classe, que configura e inicia a conexão automaticamente.
+    function __construct()
+    {
+        $this->configureConnection(CONN); // Supõe-se que a constante CONN seja definida em algum lugar.
         $this->connect();
     }
 
-    private function configureConnection(array $connectionDetails) {
+    // Método privado para configurar detalhes da conexão com o banco de dados.
+    private function configureConnection(array $connectionDetails)
+    {
         $this->driver = $connectionDetails['driver'];
         $this->host = $connectionDetails['host'];
         $this->username = $connectionDetails['username'];
@@ -30,7 +36,9 @@ class MySQL {
         $this->port = $connectionDetails['port'];
     }
 
-    private function connect() {
+    // Método privado para estabelecer a conexão com o banco de dados usando PDO.
+    private function connect()
+    {
         try {
             $this->pdo = new PDO(
                 $this->driver . ':host=' . $this->host . ';port=' . $this->port . ';dbname=' . $this->database,
@@ -43,24 +51,152 @@ class MySQL {
         }
     }
 
-    private function handleConnectionError(PDOException $e) {
+    // Método privado para lidar com erros de conexão.
+    private function handleConnectionError(PDOException $e)
+    {
         $error = "Não foi possível conectar ao banco de dados <strong>{$this->driver}</strong>.<br><strong>Erro: </strong><span>{$e->getMessage()}</span>";
-        require_once("./core/php/error.php");
+        require_once("./core/php/error.php"); // Supõe-se que o arquivo error.php esteja no caminho especificado.
         exit();
     }
 
-    // Adicione métodos públicos para realizar operações no banco de dados, por exemplo:
-    public function query($sql, $params = []) {
+    /**
+     * Executa uma consulta SQL e retorna os resultados em JSON.
+     *
+     * @param string $sql A consulta SQL a ser executada.
+     * @param array $params Parâmetros para a consulta (opcional).
+     * @return string|false Os resultados da consulta em JSON ou false em caso de erro.
+     */
+    public function query($sql, $params = [])
+    {
         try {
+            // Prepara a consulta SQL e a executa com os parâmetros fornecidos.
             $statement = $this->pdo->prepare($sql);
             $statement->execute($params);
-            return $statement->fetchAll(PDO::FETCH_ASSOC);
+            // Retorna os resultados da consulta como um array associativo convertido para JSON.
+            return json_encode($statement->fetchAll(PDO::FETCH_ASSOC));
         } catch (PDOException $e) {
-            // Lidar com erros de consulta
+            // Se ocorrer um erro durante a consulta, pode-se lidar com ele aqui.
             // Exemplo: logar o erro, lançar exceção personalizada, etc.
             return false;
         }
     }
 
-    // Outros métodos para INSERT, UPDATE, DELETE, etc.
+    // Método para inserir dados no banco de dados.
+    /**
+     * Insere dados em uma tabela e retorna um JSON indicando sucesso ou falha.
+     *
+     * @param string $table O nome da tabela.
+     * @param array $data Os dados a serem inseridos na tabela.
+     * @return string JSON indicando sucesso ou falha na inserção.
+     */
+    public function insert($table, $data)
+    {
+        $columns = implode(', ', array_keys($data));
+        $values = implode(', ', array_fill(0, count($data), '?'));
+
+        $sql = "INSERT INTO $table ($columns) VALUES ($values)";
+
+        try {
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute(array_values($data));
+
+            // Obter o ID da última inserção
+            $lastInsertId = $this->pdo->lastInsertId();
+
+            return json_encode(['success' => true, 'id' => $lastInsertId]);
+        } catch (PDOException $e) {
+            // Lidar com erros de inserção
+            return json_encode(['success' => false, 'error' => $e->getMessage()]);
+        }
+    }
+
+
+    // Método para obter todos os registros de uma tabela.
+    /**
+     * Obtém todos os registros de uma tabela e retorna um JSON.
+     *
+     * @param string $table O nome da tabela.
+     * @return string JSON contendo todos os registros da tabela ou false em caso de erro.
+     */
+    public function getAll($table)
+    {
+        $sql = "SELECT * FROM $table";
+
+        try {
+            $statement = $this->pdo->query($sql);
+            return json_encode($statement->fetchAll(PDO::FETCH_ASSOC));
+        } catch (PDOException $e) {
+            // Lidar com erros de consulta
+            return json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    // Método para obter um registro por ID de uma tabela.
+    /**
+     * Obtém um registro por ID de uma tabela e retorna um JSON.
+     *
+     * @param string $table O nome da tabela.
+     * @param int $id O ID do registro a ser obtido.
+     * @return string JSON contendo o registro ou false em caso de erro.
+     */
+    public function getById($table, $id)
+    {
+        $sql = "SELECT * FROM $table WHERE id = ?";
+
+        try {
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute([$id]);
+            return json_encode($statement->fetch(PDO::FETCH_ASSOC));
+        } catch (PDOException $e) {
+            // Lidar com erros de consulta
+            return json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    // Método para atualizar um registro em uma tabela.
+    /**
+     * Atualiza um registro em uma tabela e retorna um JSON indicando sucesso ou falha.
+     *
+     * @param string $table O nome da tabela.
+     * @param array $data Os novos dados a serem atualizados na tabela.
+     * @param int $id O ID do registro a ser atualizado.
+     * @return string JSON indicando sucesso ou falha na atualização.
+     */
+    public function update($table, $data, $id)
+    {
+        $setClause = implode('=?, ', array_keys($data)) . '=?';
+        $sql = "UPDATE $table SET $setClause WHERE id = ?";
+
+        try {
+            $values = array_merge(array_values($data), [$id]);
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute($values);
+            return json_encode(['success' => true]);
+        } catch (PDOException $e) {
+            // Lidar com erros de atualização
+            return json_encode(['success' => false, 'error' => $e->getMessage()]);
+        }
+    }
+
+    // Método para excluir um registro de uma tabela.
+    /**
+     * Exclui um registro de uma tabela e retorna um JSON indicando sucesso ou falha.
+     *
+     * @param string $table O nome da tabela.
+     * @param int $id O ID do registro a ser excluído.
+     * @return string JSON indicando sucesso ou falha na exclusão.
+     */
+    public function delete($table, $id)
+    {
+        $sql = "DELETE FROM $table WHERE id = ?";
+
+        try {
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute([$id]);
+            return json_encode(['success' => true]);
+        } catch (PDOException $e) {
+            // Lidar com erros de exclusão
+            return json_encode(['success' => false, 'error' => $e->getMessage()]);
+        }
+    }
 }

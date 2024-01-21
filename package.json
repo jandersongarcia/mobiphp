@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "jquery": "^3.7.1",
-    "page": "^1.11.6"
+    "navigo": "^8.11.1"
   }
 }

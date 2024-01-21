@@ -6,13 +6,13 @@
             "method": "ALL"
         },
         {
-            "path": "\/Login",
-            "controller": "Login",
+            "path": "\/docs",
+            "controller": "Docs",
             "method": "ALL"
         },
         {
-            "path": "\/Forgotpass",
-            "controller": "Forgotpass",
+            "path": "\/example",
+            "controller": "Example",
             "method": "ALL"
         }
     ]

@@ -1,9 +1,9 @@
 <?php
 
 class Main {
-    public $title = "Main";
+    public $title = "Mobi PHP";
 
     // Declarar os componentes que serão usados na página.
-    public $components = [];
+    public $components = ['navbar'];
     
 }

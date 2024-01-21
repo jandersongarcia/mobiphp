@@ -1,0 +1,56 @@
+/* Estilo para a classe bg-purple */
+.bg-purple {
+    background-color: #820AD1;
+    color: #FFFFCC;
+    /* Amarelo claro para o texto */
+}
+
+/* Estilo para a classe btn-purple */
+.btn-purple {
+    background-color: #820AD1;
+    border-color: #820AD1;
+    /* Cor da borda igual à cor de fundo */
+    color: #FFFFCC;
+    /* Amarelo claro para o texto */
+}
+
+/* Estilo para a classe btn-purple quando hover */
+.btn-purple:hover {
+    background-color: #66099A;
+    /* Tom mais escuro quando hover (opcional) */
+    border-color: #66099A;
+    /* Cor da borda igual à cor de fundo quando hover (opcional) */
+    color: #FFFFCC;
+    /* Amarelo claro para o texto quando hover (opcional) */
+}
+
+/* Estilo da barra de navegação navbar-purple */
+.navbar-purple {
+    background-color: #820AD1;
+    color: #FFFFA5;
+}
+
+/* Estilize os links dentro da barra de navegação */
+.navbar-purple a {
+    color: #FFFFA5;
+}
+
+/* Altere a cor do botão de navegação ativo */
+.navbar-purple .navbar-nav .nav-item.active .nav-link {
+    color: #FFFFA5;
+}
+
+/* Altere a cor do botão de navegação ao passar o mouse */
+.navbar-purple .navbar-nav .nav-item .nav-link:hover {
+    color: #FFFFA5;
+}
+
+/* Estilo do texto da navbar-brand */
+.navbar-purple .navbar-brand {
+    color: #FFFFA5;
+}
+
+/* Altere a cor do texto da navbar-brand ao passar o mouse */
+.navbar-purple .navbar-brand:hover {
+    color: #FFFFA5;
+}

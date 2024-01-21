@@ -10,7 +10,9 @@
         "mobi-create-component" : "php core/php/composer/create-component.php",
         "mobi-delete-component" : "php core/php/composer/delete-component.php",
         "mobi-create-module" : "php core/php/composer/create-module.php",
-        "mobi-delete-module" : "php core/php/composer/delete-module.php"
+        "mobi-delete-module" : "php core/php/composer/delete-module.php",
+        "mobi-list-routes" : "php core/php/composer/routes-list.php",
+        "mobi-rename-route" : "php core/php/composer/routes-rename.php"
     },
     "require": {
         "matthiasmullie/minify": "^1.3",

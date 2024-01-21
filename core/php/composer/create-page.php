@@ -18,8 +18,12 @@ if ($argc !== 3 || empty($argv[1]) || empty($argv[2])) {
 }
 
 // Obter o nome da página e o nome da rota a partir dos argumentos da linha de comando
-$nomePagina = ucfirst(strtolower(preg_replace('/[^a-zA-Z0-9-_]/', '', $argv[1])));
-$nomeRota = ($argv[2] == '/') ? '/' : ucfirst(strtolower(preg_replace('/[^a-zA-Z0-9-_]/', '', $argv[2])));
+$nomePagina = preg_replace('/[^a-zA-Z0-9_]/', '', str_replace('-','_',$argv[1]));
+$nomeRota = ($argv[2] == '/') ? '/' : preg_replace('/[^a-zA-Z0-9_]/', '', str_replace('-','_',$argv[2]));
+
+// Remover excesso de espaços
+$nomePagina = ucfirst(strtolower(trim($nomePagina)));
+$nomeRota = ($nomeRota == '/') ? '/' : strtolower(trim($nomeRota));
 
 // Verificar se $nomePagina ou $nomeRota está vazio após o tratamento
 if (empty($nomePagina) || empty($nomeRota)) {
@@ -112,5 +116,9 @@ echo "Arquivo CSS para $nomePagina: " . colorizar("[OK]", 32) . "\n";
 
 // JS
 file_put_contents("app/pages/$nomePagina/$nomePagina.js", "// Scripts JavaScript para $nomePagina");
-echo "Arquivo JavaScript para $nomePagina: " . colorizar("[OK]", 32) . "\n";
-echo colorizar("Página '$nomePagina' configurada com sucesso em ", 33) . colorizar("./app/pages\n\n", 94);
+echo "Arquivo JavaScript para $nomePagina: " . colorizar("[OK]", 32) . "\n\n";
+
+// Mensagem de conclusão
+echo colorizar("Página '$nomePagina' configurada com sucesso em ", 33) . colorizar("./app/pages\n", 94);
+echo colorizar("A rota ficou registrada como ", 33) . colorizar("'/$nomeRota'\n\n", 94);
+echo "Para listar as rotas da aplicação, use o comando " . colorizar("composer mobi-list-routes\n\n", 33);

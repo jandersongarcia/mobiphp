@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'app_data_type' => '',
+    'app_data_type' => 'mysql',
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ return [
         'driver' => 'mysql',
         'host' => 'localhost',
         'port' => '3306',
-        'database' => 'onlyforfunny',
+        'database' => 'mobidb',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8mb4',

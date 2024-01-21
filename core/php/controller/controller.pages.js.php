@@ -25,12 +25,12 @@ if ($app->checkHeader() || APP['mode'] == 0) {
             $controllerName = $route['controller'];
             $path = "app/pages/$controllerName/$controllerName.js";
             $ctrlPath = "app/pages/$controllerName/$controllerName.controller.php";
-            
-            // Verifica se o arquivo da página existe e se a rota corresponde à página atual
-            if (file_exists($path) && $route['path'] == $page) {
 
+            // Verifica se o arquivo da página existe e se a rota corresponde à página atual
+            if (file_exists($path) && $route['path'] == strtolower($page)) {
+                
                 // REALIZA O TRATAMENTO DOS COMPONENTES
-                if (file_exists($ctrlPath)) {
+                if (file_exists($path)) {
                     $exist = $controllerName;
                 }
                 break;
@@ -46,6 +46,8 @@ if ($app->checkHeader() || APP['mode'] == 0) {
             
             // Carrega o css da página
             $allStyles .= (file_exists($path)) ? file_get_contents($path) . PHP_EOL : '';
+
+            
 
             // Carrega o controller da página
             if(file_exists($ctrlPath)) require_once($ctrlPath);
