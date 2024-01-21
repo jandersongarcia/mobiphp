@@ -9,7 +9,7 @@
             "email": "jganjos.info@gmail.com"
         }
     ],
-    "autoload":{
+    "autoload": {
         "classmap": [
             "core/class"
         ]
@@ -22,13 +22,15 @@
         "twbs/bootstrap-icons": "^1.10"
     },
     "scripts": {
-        "mobi-create-page" : "php core/php/composer/create-page.php",
-        "mobi-delete-page" : "php core/php/composer/delete-page.php",
-        "mobi-create-component" : "php core/php/composer/create-component.php",
-        "mobi-delete-component" : "php core/php/composer/delete-component.php",
-        "mobi-create-module" : "php core/php/composer/create-module.php",
-        "mobi-delete-module" : "php core/php/composer/delete-module.php",
-        "mobi-list-routes" : "php core/php/composer/routes-list.php",
-        "mobi-rename-route" : "php core/php/composer/routes-rename.php"
-    }
+        "mobi-create-page": "php core/php/composer/create-page.php",
+        "mobi-delete-page": "php core/php/composer/delete-page.php",
+        "mobi-create-component": "php core/php/composer/create-component.php",
+        "mobi-delete-component": "php core/php/composer/delete-component.php",
+        "mobi-create-module": "php core/php/composer/create-module.php",
+        "mobi-delete-module": "php core/php/composer/delete-module.php",
+        "mobi-list-routes": "php core/php/composer/routes-list.php",
+        "mobi-rename-route": "php core/php/composer/routes-rename.php"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
