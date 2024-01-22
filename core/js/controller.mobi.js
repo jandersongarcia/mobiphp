@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.head.appendChild(script);
         nameId = `el${name}`;
 
-        console.log(`el${name}`);
-
     }
 
     // Carregar o script do Navigo dinamicamente

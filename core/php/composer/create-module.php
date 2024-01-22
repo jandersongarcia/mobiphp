@@ -45,11 +45,10 @@ if (mkdir("app/modules/$nomeComponent", 0777, true)) {
     exit();
 }
 
-// Criar arquivos dentro da pasta recém-criada
-// Página View
-file_put_contents("app/modules/$nomeComponent/$nomeComponent.modal.php", "<?php\n\n// Modal $nomeComponent\n// A classe deste módulo é ".'$'."m$nomeComponent");
-echo "Modal do módulo $nomeComponent: " . colorizar("[OK]", 32) . "\n";
+// Cria o Controller
+file_put_contents("app/modules/$nomeComponent/$nomeComponent.controller.php", "<?php\n\n// Modal $nomeComponent\n// // O objeto representando a classe deste módulo é ".'$'."m$nomeComponent");
+echo "Controller do módulo $nomeComponent: " . colorizar("[OK]", 32) . "\n";
 
-// Página Controller
-file_put_contents("app/modules/$nomeComponent/$nomeComponent.controller.php", "<?php\n\n// Controlador do módulo $nomeComponent\n\nclass $nomeComponent {\n\n}");
-echo "Controlador do módulo $nomeComponent: " . colorizar("[OK]", 32) . "\n";
+// Cria o Modal
+file_put_contents("app/modules/$nomeComponent/$nomeComponent.modal.php", "<?php\n\nclass $nomeComponent {\n\n\n}");
+echo "Modal do módulo $nomeComponent: " . colorizar("[OK]", 32) . "\n";

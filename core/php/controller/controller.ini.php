@@ -11,9 +11,10 @@ if (file_exists("app/modules/$ctrl")) {
 
     // Verifica se o cabeçalho é válido ou se o modo de aplicativo é 0 (sem verificação de cabeçalho)
     if ($app->checkHeader() || APP['mode'] == 0) {
+
         // Inclui o arquivo de controller
-        if (file_exists("app/modules/$ctrl/$ctrl.controller.php")) {
-            require_once("app/modules/$ctrl/$ctrl.controller.php");
+        if (file_exists("app/modules/$ctrl/$ctrl.modal.php")) {
+            require_once("app/modules/$ctrl/$ctrl.modal.php");
 
             // Verifica se a classe do controller existe
             if (class_exists("$ctrl")) {
@@ -21,8 +22,8 @@ if (file_exists("app/modules/$ctrl")) {
                 $$name = new $ctrl;
 
                 // Inclui o arquivo modal se existir
-                if (file_exists("app/modules/$ctrl/$ctrl.modal.php")) {
-                    require_once("app/modules/$ctrl/$ctrl.modal.php");
+                if (file_exists("app/modules/$ctrl/$ctrl.controller.php")) {
+                    require_once("app/modules/$ctrl/$ctrl.controller.php");
                 }
             } else {
                 // Log e mensagem de erro se a classe do controller não existir
@@ -36,6 +37,7 @@ if (file_exists("app/modules/$ctrl")) {
             $message = "The '$ctrl' controller does not exist.";
         }
     } else {
+        // Bloqueia o acesso ao módulo se o cabeçalho não for válido e o modo de aplicativo não for 0
         $type = 'blocked';
         $message = "Attempt to access module '$ctrl'.";
     }
@@ -48,6 +50,7 @@ if (file_exists("app/modules/$ctrl")) {
     $message = 'Controller not found';
 }
 
+// Se houver um tipo de erro definido, registra o erro e retorna a mensagem como JSON
 if ($type !== false) {
     $ip = $_SERVER['REMOTE_ADDR'];
     $errorMessage = "[" . date('Y-m-d H:i:s') . "] [$ip] [$type] $message.\n";

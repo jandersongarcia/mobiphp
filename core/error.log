@@ -263,3 +263,4 @@
 [2024-01-19 16:36:22] [error] '/Login' page not found in routes file.
 [2024-01-19 16:36:43] [error] '/Login' page not found in routes file.
 [2024-01-20 18:21:30] [error] '/path' page not found in routes file.
+[2024-01-22 09:01:09] [127.0.0.1] [error] Controller not found.
