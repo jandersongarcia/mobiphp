@@ -1,4 +1,4 @@
-let todoId = '';
+var todoId = '';
 
 function load() {
     const url = '/ctrl/tasks';
@@ -8,7 +8,7 @@ function load() {
 
     fetch(`${url}?action=loadAll`)
         .then(response => response.json())
-        .then(data => data.forEach(task => addTask(task.id, task.title, task.description, task.file_path, task.check)))
+        .then(data => data.forEach(task => addTask(task.id, task.title, task.description, task.file_path, task.concluded)))
         .catch(error => console.error('Erro na requisição:', error));
 
     // Adicionar evento de envio de formulário
@@ -20,12 +20,26 @@ function load() {
         fetch(url, { method: 'POST', body: formData })
             .then(response => response.json())
             .then(responseObject => {
-                let { id } = responseObject;
-                let title = formData.get('title');
-                let description = formData.get('description');
-                addTask(id, title, description);
+
+
+                let id = document.getElementById('id').value;
+                // Certifique-se de que os elementos existem
+                const titleElement = document.getElementById('title');
+                const descriptionElement = document.getElementById('description');
+                const titleIdElement = document.getElementById(`title${id}`);
+                const descriptionIdElement = document.getElementById(`description${id}`);
+
+                console.log(responseObject['id']);
+
+                if (!responseObject['id']) {
+                    titleIdElement.innerHTML = titleElement.value;
+                    descriptionIdElement.innerHTML = descriptionElement.value;
+                } else {
+                    addTask(responseObject['id'],titleElement.value,descriptionElement.value)
+                }
 
                 // Limpar campos do formulário
+                document.getElementById('id').value = "";
                 document.getElementById('title').value = "";
                 document.getElementById('description').value = "";
                 document.getElementById('title').focus();
@@ -39,7 +53,7 @@ function load() {
             .catch(error => console.log(error));
     });
 
-    title.addEventListener('blur',()=>{
+    title.addEventListener('blur', () => {
         title.value = title.value.trim();
     })
 
@@ -59,17 +73,17 @@ function addTask(id, title, description, image = '', status = '') {
     <div id="task${id}" ${texts}>
         <div>
             <h5 class="mb-1" id="title${id}">${title}</h5>
-            <p class="mb-1">${description}</p>
+            <p class="mb-1" id="description${id}">${description}</p>
         </div>
         <div id="act${id}" class="d-flex justify-content-end ${actions}">
         <div class="btn-group justify-content-end" role="group" aria-label="Ações">
-            <button type="button" class="btn btn-outline-primary" data-edit-id="${id}">
+            <button type="button" class="btn btn-outline-primary" onclick="edit(${id})">
                 <i class="bi bi-pencil"></i>
             </button>
             <button type="button" class="btn btn-outline-secondary ${images}">
                 <i class="bi bi-paperclip"></i>
             </button>
-            <button type="button" class="btn btn-outline-danger" data-trash-id="${id}">
+            <button type="button" class="btn btn-outline-danger" onclick="del(${id})">
                 <i class="bi bi-trash"></i>
             </button>
             <button type="button" class="btn btn-outline-success" onclick="check(${id})">
@@ -81,10 +95,10 @@ function addTask(id, title, description, image = '', status = '') {
 `;
 
     document.querySelector('.list-group').appendChild(newTaskItem);
-    
+
 }
 
-function check(value){
+function check(value) {
     let title = document.getElementById(`title${value}`)
     document.getElementById('lblCheck').innerHTML = title.innerHTML;
     todoId = value;
@@ -93,11 +107,52 @@ function check(value){
     ckModal.show();
 }
 
-function checkConfirm(){
-    document.getElementById(`act${todoId}`).classList.add('d-none')
-    document.getElementById(`task${todoId}`).classList.add('text-decoration-line-through','text-secondary')
-    var ckModal = new bootstrap.Modal(document.getElementById('checkModal'));
-    ckModal.hide();
+function checkConfirm() {
+
+    const url = '/ctrl/tasks';
+    fetch(`${url}?action=check&id=${todoId}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById(`act${todoId}`).classList.add('d-none')
+            document.getElementById(`task${todoId}`).classList.add('text-decoration-line-through', 'text-secondary')
+        })
+        .catch(error => console.error('Erro na requisição:', error));
+
+}
+
+function del(value) {
+    let title = document.getElementById(`title${value}`)
+    document.getElementById('lblDel').innerHTML = title.innerHTML;
+    todoId = value;
+    // Abre a modal
+    var ckModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+    ckModal.show();
+}
+
+function delConfirm() {
+
+    const url = '/ctrl/tasks';
+    fetch(`${url}?action=delete&id=${todoId}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById(`task${todoId}`).classList.add('d-none')
+        })
+        .catch(error => console.error('Erro na requisição:', error));
+
+}
+
+function edit(value) {
+    const url = '/ctrl/tasks';
+    fetch(`${url}?action=edit&id=${value}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data) {
+                document.getElementById('id').value = data.id;
+                document.getElementById('title').value = data.title;
+                document.getElementById('description').value = data.description;
+            }
+        })
+        .catch(error => console.error('Erro na requisição:', error));
 }
 
 // Carregar tarefas ao carregar a página

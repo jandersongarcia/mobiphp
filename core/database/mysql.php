@@ -139,9 +139,9 @@ class MySQL
      * @param int $id O ID do registro a ser obtido.
      * @return string JSON contendo o registro ou false em caso de erro.
      */
-    public function getById($table, $id)
+    public function getById($table, $tupla, $id)
     {
-        $sql = "SELECT * FROM $table WHERE id = ?";
+        $sql = "SELECT * FROM $table WHERE $tupla = ?";
 
         try {
             $statement = $this->pdo->prepare($sql);
