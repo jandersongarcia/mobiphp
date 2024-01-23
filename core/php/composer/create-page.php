@@ -103,7 +103,7 @@ echo "Adicionando a rota " . colorizar("'/$nomeRota'", 36) . " à lista: " . col
 // Criar arquivos dentro da pasta recém-criada
 
 // Página View
-file_put_contents("app/pages/$nomePagina/$nomePagina.view.php", "<h1> View da página $nomePagina</h1>");
+file_put_contents("app/pages/$nomePagina/$nomePagina.view.php", "<div class='w-100 vh-100 bg-dark text-light d-flex flex-column justify-content-center align-items-center'>\n    <h1>MobiPHP</h1>\n    <p>Página $nomePagina</p>\n</div>");
 echo "Visualização da página $nomePagina: " . colorizar("[OK]", 32) . "\n";
 
 // Página Controller

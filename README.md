@@ -41,7 +41,8 @@ Antes de começar, certifique-se de que sua máquina atenda aos seguintes pré-r
     - **mysql.php**: Classe para conexão com MySQL.
     - **pgsql.php**: Classe para conexão com PostgreSQL.
   - **js**: Arquivos JavaScript.
-    - **controller.mobi.js**: Controlador JavaScript principal.
+    - **routes.mobi.js**: Controlador JavaScript principal.
+    - **request.mobi.js**: Tratamento de requisições via GET e POST
   - **json**: Arquivos JSON.
     - **routes.json**: Definição de rotas em formato JSON.
   - **php**: Scripts PHP.

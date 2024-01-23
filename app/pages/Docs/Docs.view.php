@@ -1,1 +1,0 @@
-<?= $mobi->components(['navbar','titlebar']) ?>

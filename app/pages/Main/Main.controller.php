@@ -1,9 +1,12 @@
 <?php
 
+ // Controlador para Main 
+
 class Main {
-    public $title = "Mobi PHP";
+
+    public $title = 'Main';
 
     // Declarar os componentes que serão usados na página.
-    public $components = ['navbar'];
-    
+    public $components = [];
+
 }

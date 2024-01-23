@@ -4,16 +4,6 @@
             "path": "\/",
             "controller": "Main",
             "method": "ALL"
-        },
-        {
-            "path": "\/docs",
-            "controller": "Docs",
-            "method": "ALL"
-        },
-        {
-            "path": "\/example",
-            "controller": "Example",
-            "method": "ALL"
         }
     ]
 }
