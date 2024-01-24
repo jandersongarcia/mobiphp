@@ -4,6 +4,29 @@
             "path": "\/",
             "controller": "Main",
             "method": "ALL"
+        },
+        {
+            "path": "\/ata",
+            "controller": "Ata",
+            "method": "ALL"
+        },
+        {
+            "path": "ata",
+            "controller": "Registro",
+            "method": "ALL",
+            "subroutes": [
+                {
+                    "path": "registro",
+                    "controller": "Ata_registro",
+                    "method": "ALL",
+                    "subroutes": []
+                }
+            ]
+        },
+        {
+            "path": "\/ata\/registro",
+            "controller": "Ata_registro",
+            "method": "ALL"
         }
     ]
 }

@@ -108,6 +108,10 @@ O Mobiphp simplifica a criação de páginas automaticamente através do Compose
 - Isso criará a pasta da página e configurará a rota em core/json/routes.json.
 - A estrutura da pasta criada é a seguinte:
 
+### Criação de subrotas
+- No caso de subrotas, podemos informar o caminho na criação da página.
+- **Por exemplo**: Se precisar uma subrota _empresa/cadastro_, o comando seria **composer mobi-create-page nome-da-pagina empresa/cadastro**
+
 ### Estrutura da Página Criada
 - **app**
     - **pages**

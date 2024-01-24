@@ -1,0 +1,1 @@
+// Scripts JavaScript para Ata_registro

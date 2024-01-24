@@ -1,10 +1,10 @@
 <?php
 
- // Controlador para Main 
+ // Controlador para Ata_registro 
 
-class Main {
+class Ata_registro {
 
-    public $title = 'Main';
+    public $title = 'Ata_registro';
 
     // Declarar os componentes que serão usados na página.
     public $components = ["administrative_panel"];

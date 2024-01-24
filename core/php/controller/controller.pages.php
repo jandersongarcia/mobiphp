@@ -8,6 +8,9 @@ $routes = $app->listRoutes();
 // Obtém o caminho da página atual a partir da URL
 $page = "/" . strtolower($app->path(2));
 
+$query = explode('pages/',$_SERVER['QUERY_STRING']);
+$page = (substr($query[1],-1) == "/") ? "/".substr($query[1],0,-1) : "/".$query[1];
+
 // Verifica se o cabeçalho está presente ou se o modo do aplicativo é 0
 if ($app->checkHeader() || APP['mode'] == 0) {
 

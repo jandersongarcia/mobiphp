@@ -19,7 +19,7 @@ if ($argc !== 3 || empty($argv[1]) || empty($argv[2])) {
 
 // Obter o nome da página e o nome da rota a partir dos argumentos da linha de comando
 $nomePagina = preg_replace('/[^a-zA-Z0-9_]/', '', str_replace('-','_',$argv[1]));
-$nomeRota = ($argv[2] == '/') ? '/' : preg_replace('/[^a-zA-Z0-9_]/', '', str_replace('-','_',$argv[2]));
+$nomeRota = ($argv[2] == '/') ? '/' : preg_replace('/[^a-zA-Z0-9_\/]/', '', str_replace('-','_',$argv[2]));
 
 // Remover excesso de espaços
 $nomePagina = ucfirst(strtolower(trim($nomePagina)));

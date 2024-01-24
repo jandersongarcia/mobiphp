@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Função para executar scripts dinamicamente
     function executarScripts(src, name) {
-        var scriptPath = './ctrl/pages.js' + src;
+        var scriptPath = '/ctrl/pages.js' + src;
         let id = `el${nameId}`;
         // Supondo que você tenha um script com um ID específico
         var scriptParaRemover = document.getElementById(id);
@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Carregar o script do Navigo dinamicamente
-    carregarScript('./node_modules/navigo/lib/navigo.js', function () {
-        let caminho = './core/json/routes.json?t=' + new Date().getTime();
+    carregarScript('/node_modules/navigo/lib/navigo.js', function () {
+        let caminho = '/core/json/routes.json?t=' + new Date().getTime();
 
         // Carregar as rotas do arquivo JSON
         fetch(caminho)
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 data.routes.forEach(route => {
                     router.on(route.path, function (params, query) {
-                        var pagePath = './ctrl/pages' + route.path;
+                        var pagePath = '/ctrl/pages' + route.path;
                         fetch(pagePath)
                             .then(response => {
                                 if (response.ok) {
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Rota genérica para lidar com páginas não encontradas
                 router.notFound(function () {
-                    fetch('./public/error/404.php')
+                    fetch('/public/error/404.php')
                         .then(response => response.text())
                         .then(html => {
                             var newDiv = document.createElement('div');
@@ -89,8 +89,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.body.addEventListener('click', function (event) {
                     var target = event.target;
 
-                    // Verificar se o clique foi em um link
-                    if (target.tagName === 'A' && target.getAttribute('href')) {
+                    // Verificar se o clique foi em um link (ou um elemento filho do link)
+                    var isLinkClick = false;
+                    while (target) {
+                        if (target.tagName === 'A') {
+                            isLinkClick = true;
+                            break;
+                        }
+                        target = target.parentElement;
+                    }
+
+                    if (isLinkClick) {
                         // Impedir o comportamento padrão do link
                         event.preventDefault();
 
@@ -98,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         router.navigate(target.getAttribute('href'));
                     }
                 });
+
 
                 // Iniciar o roteamento
                 router.resolve();

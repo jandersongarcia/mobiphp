@@ -8,6 +8,8 @@ $routes = $app->listRoutes();
 // Obtém o caminho da página atual a partir da URL
 $page = "/" . ucfirst(strtolower($app->path(2)));
 
+$nameF = 'mobiFct'.ucfirst(strtolower($app->path(2)));
+
 // Verifica se o cabeçalho está presente ou se o modo do aplicativo é 0
 if ($app->checkHeader() || APP['mode'] == 0) {
 
@@ -47,8 +49,6 @@ if ($app->checkHeader() || APP['mode'] == 0) {
             // Carrega o css da página
             $allStyles .= (file_exists($path)) ? file_get_contents($path) . PHP_EOL : '';
 
-            
-
             // Carrega o controller da página
             if(file_exists($ctrlPath)) require_once($ctrlPath);
 
@@ -74,12 +74,12 @@ if ($app->checkHeader() || APP['mode'] == 0) {
                 }
             }
 
-            // Carrega o css
+            echo "function $nameF(){";
             // Utiliza o Minify\CSS para compactar os estilos
             $minifier = new Minify\JS();
             $minifier->add($allStyles);
             echo $minifier->minify();
-
+            echo "} $nameF();";
         } else {
             $errorMessage = "[" . date('Y-m-d H:i:s') . "] [error] '$page' page not found in routes file.\n";
             error_log($errorMessage, 3, 'core/error.log');
