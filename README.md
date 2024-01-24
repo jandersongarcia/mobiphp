@@ -1,18 +1,16 @@
 # MobiPHP
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jandersongarcia/mobiphp/main/public/assets/images/mobi-logo.png" alt="MobiPHP">
+  <img src="https://raw.githubusercontent.com/jandersongarcia/MobiPHP/main/public/assets/images/mobi-logo.png" alt="MobiPHP">
 </p>
 
-## Introdução
-
-O Mobiphp é um framework em PHP com JavaScript projetado para simplificar a criação rápida de aplicações web completas ou atuar como backend. Esta documentação fornece informações essenciais para iniciar o desenvolvimento com o Mobiphp.
+O **MobiPHP** é um framework em PHP com JavaScript projetado para simplificar a criação rápida de aplicações web completas ou atuar como backend. Esta documentação fornece informações essenciais para iniciar o desenvolvimento com o MobiPHP.
 
 ## Pré-requisitos
 
 Antes de começar, certifique-se de que sua máquina atenda aos seguintes pré-requisitos:
 
-1. **PHP**: O Mobiphp é baseado em PHP; portanto, é necessário ter o PHP instalado, recomendando-se a versão 7.2 ou superior. [Baixe o PHP](https://www.php.net/).
+1. **PHP**: O MobiPHP é baseado em PHP; portanto, é necessário ter o PHP instalado, recomendando-se a versão 7.2 ou superior. [Baixe o PHP](https://www.php.net/).
 
 2. **Banco de Dados**:
 
@@ -20,7 +18,7 @@ Antes de começar, certifique-se de que sua máquina atenda aos seguintes pré-r
 
    - Se preferir o PostgreSQL, instale e configure um servidor PostgreSQL. [Baixe o PostgreSQL](https://www.postgresql.org/).
 
-3. **Composer**: O Composer é uma ferramenta essencial para gerenciar as dependências do Mobiphp. [Baixe o Composer](https://getcomposer.org/).
+3. **Composer**: O Composer é uma ferramenta essencial para gerenciar as dependências do MobiPHP. [Baixe o Composer](https://getcomposer.org/).
 
 ## Estrutura de Pastas
 
@@ -38,7 +36,7 @@ Antes de começar, certifique-se de que sua máquina atenda aos seguintes pré-r
 - **core**: Núcleo do framework.
   - **class**: Classes principais do framework.
     - **application.php**: Classe de aplicação principal.
-    - **mobi.php**: Classe principal do Mobiphp.
+    - **mobi.php**: Classe principal do MobiPHP.
     - **root.php**: Classe de raiz.
     - **routes.php**: Classe para o tratamento de rotas.
   - **database**: Classes de conexão com bancos de dados.
@@ -84,19 +82,19 @@ Antes de começar, certifique-se de que sua máquina atenda aos seguintes pré-r
 
 ## Dependências e Bibliotecas
 
-O Mobiphp faz uso das seguintes bibliotecas e dependências, algumas incorporadas diretamente:
+O MobiPHP faz uso das seguintes bibliotecas e dependências, algumas incorporadas diretamente:
 
 - **matthiasmullie**: Biblioteca PHP para manipulação de arquivos e diretórios. [matthiasmullie/github](https://github.com/matthiasmullie).
 
-- **bootstrap**: Framework front-end para design responsivo, opcionalmente incorporado no Mobiphp. [twbs/bootstrap](https://github.com/twbs/bootstrap).
+- **bootstrap**: Framework front-end para design responsivo, opcionalmente incorporado no MobiPHP. [twbs/bootstrap](https://github.com/twbs/bootstrap).
 
 - **bootstrap-icons**: Conjunto de ícones para uso com Bootstrap. [twbs/bootstrap-icons](https://github.com/twbs/bootstrap-icons).
 
 - **navigo.js**: Biblioteca para roteamento no lado do cliente, simplificando a construção de Single Page Applications. [krasimir/navigo](https://github.com/krasimir/navigo).
 
-- **jquery**: Biblioteca JavaScript para manipulação do DOM, opcionalmente incorporada no Mobiphp. [jquery/jquery](https://github.com/jquery/jquery)
+- **jquery**: Biblioteca JavaScript para manipulação do DOM, opcionalmente incorporada no MobiPHP. [jquery/jquery](https://github.com/jquery/jquery)
 
-Ao utilizar o Mobiphp, você tem a flexibilidade de incorporar o Bootstrap e o jQuery ou substituí-los por outras bibliotecas.
+Ao utilizar o MobiPHP, você tem a flexibilidade de incorporar o Bootstrap e o jQuery ou substituí-los por outras bibliotecas.
 
 Certifique-se de revisar a documentação oficial de cada biblioteca para obter informações detalhadas sobre sua utilização e configuração.
 
@@ -111,7 +109,7 @@ composer create-project --stability=dev jandersongarcia/mobi-php nome-do-projeto
 
 ## Criação de Páginas
 
-O Mobiphp simplifica a criação de páginas automaticamente através do Composer.
+O MobiPHP simplifica a criação de páginas automaticamente através do Composer.
 
 ```bash
 composer mobi-create-page nome-da-pagina nome-da-rota
