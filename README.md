@@ -98,14 +98,21 @@ Certifique-se de revisar a documentação oficial de cada biblioteca para obter 
 
 ## Instalação
 
-- Realize a instalação inicial do Mobiphp baixando o pacote e descompactando-o no diretório PHP desejado.
-- Depois de descompactado execute o comando **composer update** para inicar o uso dos comandos do Mobi-PHP.
+- Antes de criar o projeto, certifique-se de que sua máquina local tenha **PHP** e **Composer** instalados.
+- Depois de instalados, você pode criar um novo projeto através do _create-project_ comando do Composer:
+
+```bash
+composer create-project --stability=dev jandersongarcia/mobi-php nome-do-projeto
+```
 
 ## Criação de Páginas
 
 O Mobiphp simplifica a criação de páginas automaticamente através do Composer.
 
-- Utilize o comando: **composer mobi-create-page nome-da-pagina nome-da-rota**
+```bash
+composer mobi-create-page nome-da-pagina nome-da-rota
+```
+
 - Isso criará a pasta da página e configurará a rota em core/json/routes.json.
 - A estrutura da pasta criada é a seguinte:
 
@@ -118,7 +125,10 @@ O Mobiphp simplifica a criação de páginas automaticamente através do Compose
         - **Novapagina.js**: arquivo JavaScript da página
         - **Novapagina.view.php**: página de visualização
 
-- Para **excluir uma página**, utilize o comando **composer mobi-delete-page nome-da-pagina**.
+- Para **excluir uma página**, utilize o comando.
+```bash
+composer mobi-delete-page nome-da-pagina
+```
 
 ## Trabalhando com Rotas
 - Para utilizar as rotas, basta colocar o caminho dentro de um link.
@@ -130,19 +140,35 @@ O Mobiphp simplifica a criação de páginas automaticamente através do Compose
 ```
 ### Criação de subrotas
 - No caso de subrotas, podemos informar o caminho na criação da página.
-- **Por exemplo**: Se precisar uma subrota _empresa/cadastro_, o comando seria **composer mobi-create-page nome-da-pagina empresa/cadastro**
+- **Por exemplo**: Se precisar uma subrota _empresa/cadastro_, o comando seria
+
+```bash
+composer mobi-create-page nome-da-pagina empresa/cadastro
+```
 
 ### Listar Rotas
 - Caso precise listar as rotas da sua aplicação, poderá utilizar o comando **composer mobi-list-routes** ou acessa-las diretamente no arquivo json que fica em _core/json/routes.json_.
+
+```bash
+composer mobi-list-routes
+```
 
 ### Renomear rota
 - Para alterar o nome de uma rota, use o comando **composer mobi-rename-route rota-atual nova-rota**
 - Por exemplo: Supondo que precise alterar a rota _product_ para _register_, o comando ficaria o seguinte: **composer mobi-rename-route product register**
 
+```bash
+composer mobi-rename-route rota-antiga nova-rota
+```
+
 ## Criação de Componentes
 
 A utilização de componentes oferece uma maneira simples e eficiente de reutilizar código.
-- Utilize o comando: **composer mobi-create-component nome-do-componente**
+- Utilize o comando:
+
+```bash
+composer mobi-create-component nome-do-componente
+```
 - Isso criará o componente automaticamente dentro da pasta **components**.
 
 ### Estrutura do Componente Criado
@@ -156,8 +182,12 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
 
 ## Criação de Módulos
 - Os módulos são úteis para interação com o backend via requisição.
-- Utilize o comando: **composer mobi-create-module nome-do-modulo**
 - Os arquivos do módulo serão criados dentro do diretório modules.
+- Utilize o comando:
+
+```bash
+composer mobi-create-module nome-do-modulo
+```
 
 ### Estrutura do Módulo Criado
 - **app**
@@ -171,7 +201,10 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
 - A criação de algumas telas como login e painel adminstrativo são padrões em todo o sistema. Pensando nestas situações, o Mobi-PHP tem alguns temas que podem ser instalados em sua aplicação apenas com um comando.
 - Os temas são instalados em componentes e podem ser alterados e conforme a necessidade;
 
-Painel administrativo: **composer mobi-theme-install panel-admin nome-do-componente**
+Painel administrativo:
+```bash
+composer mobi-theme-install panel-admin nome-do-componente
+```
 
 ## Requisições com JavaScript
 Para simplificar o processo de envio de solicitações via POST ou GET em JavaScript, recomendo a utilização da biblioteca Mobi-Request. Essa pequena biblioteca já está pré-instalada por padrão no Mobi. [Documentação][https://github.com/jandersongarcia/mobiRequest]
