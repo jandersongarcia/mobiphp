@@ -1,4 +1,4 @@
-# Mobiphp II
+# MobiPHP
 
 ## Introdução
 
