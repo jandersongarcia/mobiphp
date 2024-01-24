@@ -19,7 +19,7 @@ if (empty($argv[1])) {
 // Obter o nome do componente a partir dos argumentos da linha de comando
 $nomeComponent = ucfirst(strtolower(preg_replace('/[^a-zA-Z0-9-_]/', '', $argv[1])));
 
-// Verificar se $nomeComponent ou $nomeRota está vazio após o tratamento
+// Verificar se $nomeComponent está vazio após o tratamento
 if (empty($nomeComponent)) {
     $mensagemErro = colorizar("Erro: ", 31) . "Nome do componente inválido\n";
     echo "$separadorLinha $mensagemErro";

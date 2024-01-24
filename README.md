@@ -99,6 +99,9 @@ Certifique-se de revisar a documentação oficial de cada biblioteca para obter 
 ## Instalação
 
 - Realize a instalação inicial do Mobiphp baixando o pacote e descompactando-o no diretório PHP desejado.
+- Depois de descompactado execute o comando **composer update** para inicar o uso dos comandos do Mobi-PHP.
+
+---
 
 ## Criação de Páginas
 
@@ -107,10 +110,6 @@ O Mobiphp simplifica a criação de páginas automaticamente através do Compose
 - Utilize o comando: **composer mobi-create-page nome-da-pagina nome-da-rota**
 - Isso criará a pasta da página e configurará a rota em core/json/routes.json.
 - A estrutura da pasta criada é a seguinte:
-
-### Criação de subrotas
-- No caso de subrotas, podemos informar o caminho na criação da página.
-- **Por exemplo**: Se precisar uma subrota _empresa/cadastro_, o comando seria **composer mobi-create-page nome-da-pagina empresa/cadastro**
 
 ### Estrutura da Página Criada
 - **app**
@@ -123,10 +122,28 @@ O Mobiphp simplifica a criação de páginas automaticamente através do Compose
 
 - Para **excluir uma página**, utilize o comando **composer mobi-delete-page nome-da-pagina**.
 
+## Trabalhando com Rotas
+- Para utilizar as rotas, basta colocar o caminho dentro de um link.
+- Supondo que temos as rotas 'product' e 'product/form' para chamar em links diferentes, ficaria assim:
+
+```html
+  <a href="/product" >Listar Produtos</a>
+  <a href="/product/form" >Cadastrar Produto</a>_
+```
+### Criação de subrotas
+- No caso de subrotas, podemos informar o caminho na criação da página.
+- **Por exemplo**: Se precisar uma subrota _empresa/cadastro_, o comando seria **composer mobi-create-page nome-da-pagina empresa/cadastro**
+
+### Listar Rotas
+- Caso precise listar as rotas da sua aplicação, poderá utilizar o comando **composer mobi-list-routes** ou acessa-las diretamente no arquivo json que fica em _core/json/routes.json_.
+
+### Renomear rota
+- Para alterar o nome de uma rota, use o comando **composer mobi-rename-route rota-atual nova-rota**
+- Por exemplo: Supondo que precise alterar a rota _product_ para _register_, o comando ficaria o seguinte: **composer mobi-rename-route product register**
+
 ## Criação de Componentes
 
 A utilização de componentes oferece uma maneira simples e eficiente de reutilizar código.
-
 - Utilize o comando: **composer mobi-create-component nome-do-componente**
 - Isso criará o componente automaticamente dentro da pasta **components**.
 
@@ -140,9 +157,7 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
         - **Novocomponente.view.php**: página de visualização do componente
 
 ## Criação de Módulos
-- Os
-
- módulos são úteis para interação com o backend via requisição.
+- Os módulos são úteis para interação com o backend via requisição.
 - Utilize o comando: **composer mobi-create-module nome-do-modulo**
 - Os arquivos do módulo serão criados dentro do diretório modules.
 
@@ -153,13 +168,17 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
       - **Novomodulo.controller.php**: scripts de controle
       - **Novomodulo.modal.php**: página de modal
 
-## Trabalhando com Rotas
-- Para utilizar as rotas, basta colocar o caminho dentro de um link.
-- Supondo que temos a rota 'product' para chamar em um link, ficaria assim _<a href="_**/product**_">Produto</a>_
+## Temas Prontos
 
-### Listar Rotas
-- Caso precise listar as rotas da sua aplicação, poderá utilizar o comando **composer mobi-list-routes** ou acessa-las diretamente no arquivo json que fica em _core/json/routes.json_.
+- A criação de algumas telas como login e painel adminstrativo são padrões em todo o sistema. Pensando nestas situações, o Mobi-PHP tem alguns temas que podem ser instalados em sua aplicação apenas com um comando.
+- Os temas são instalados em componentes e podem ser alterados e conforme a necessidade;
 
-### Renomear rota
-- Para alterar o nome de uma rota, use o comando **composer mobi-rename-route rota-atual nova-rota**
-- Por exemplo: Supondo que precise alterar a rota _product_ para _register_, o comando ficaria o seguinte: **composer mobi-rename-route product register**
+Painel administrativo: **composer mobi-theme-install panel-admin nome-do-componente**
+
+## Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests para melhorar o Mobi Request.
+
+## Licença
+
+Este projeto é licenciado sob a [Licença MIT](LICENSE).
