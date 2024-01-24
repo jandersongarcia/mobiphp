@@ -101,8 +101,6 @@ Certifique-se de revisar a documentação oficial de cada biblioteca para obter 
 - Realize a instalação inicial do Mobiphp baixando o pacote e descompactando-o no diretório PHP desejado.
 - Depois de descompactado execute o comando **composer update** para inicar o uso dos comandos do Mobi-PHP.
 
----
-
 ## Criação de Páginas
 
 O Mobiphp simplifica a criação de páginas automaticamente através do Composer.
@@ -174,6 +172,9 @@ A utilização de componentes oferece uma maneira simples e eficiente de reutili
 - Os temas são instalados em componentes e podem ser alterados e conforme a necessidade;
 
 Painel administrativo: **composer mobi-theme-install panel-admin nome-do-componente**
+
+## Requisições com JavaScript
+Para simplificar o processo de envio de solicitações via POST ou GET em JavaScript, recomendo a utilização da biblioteca Mobi-Request. Essa pequena biblioteca já está pré-instalada por padrão no Mobi. [Documentação][https://github.com/jandersongarcia/mobiRequest]
 
 ## Contribuição
 
