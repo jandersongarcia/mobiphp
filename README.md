@@ -1,5 +1,9 @@
 # MobiPHP
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jandersongarcia/mobiphp/main/public/assets/images/mobi-logo.png" alt="MobiPHP">
+</p>
+
 ## Introdução
 
 O Mobiphp é um framework em PHP com JavaScript projetado para simplificar a criação rápida de aplicações web completas ou atuar como backend. Esta documentação fornece informações essenciais para iniciar o desenvolvimento com o Mobiphp.
