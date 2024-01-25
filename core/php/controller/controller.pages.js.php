@@ -6,9 +6,10 @@ use MatthiasMullie\Minify;
 $routes = $app->listRoutes();
 
 // Obtém o caminho da página atual a partir da URL
-$page = "/" . ucfirst(strtolower($app->path(2)));
+$query = explode('pages.js/',$_SERVER['QUERY_STRING']);
+$page = (substr($query[1],-1) == "/") ? "/".substr($query[1],0,-1) : "/".$query[1];
 
-$nameF = 'mobiFct'.ucfirst(strtolower($app->path(2)));
+$nameF = 'mbF'.ucfirst(strtolower($app->path(2)));
 
 // Verifica se o cabeçalho está presente ou se o modo do aplicativo é 0
 if ($app->checkHeader() || APP['mode'] == 0) {
