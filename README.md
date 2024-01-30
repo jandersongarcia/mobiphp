@@ -6,6 +6,27 @@
 
 O **MobiPHP** é um framework em PHP com JavaScript projetado para simplificar a criação rápida de aplicações web completas ou atuar como backend. Esta documentação fornece informações essenciais para iniciar o desenvolvimento com o MobiPHP.
 
+# Sumário
+
+- [MobiPHP](#mobiphp)
+  - [Pré-requisitos](#pré-requisitos)
+  - [Estrutura de Pastas](#estrutura-de-pastas)
+  - [Dependências e Bibliotecas](#dependências-e-bibliotecas)
+  - [Instalação](#instalação)
+  - [Criação de Páginas](#criação-de-páginas)
+  - [Trabalhando com Rotas](#trabalhando-com-rotas)
+  - [Criação de Componentes](#criação-de-componentes)
+  - [Criação de Módulos](#criação-de-módulos)
+  - [Módulo de CRUD](#módulo-de-crud)
+    - [Configuração do Banco de Dados](#configuração-do-banco-de-dados)
+    - [Exemplo de Uso](#exemplo-de-uso)
+    - [Exemplo de Uso com Consulta SQL Personalizada](#exemplo-de-uso-com-consulta-sql-personalizada)
+    - [Métodos Disponíveis](#métodos-disponíveis)
+  - [Temas Prontos](#temas-prontos)
+  - [Requisições com JavaScript](#requisições-com-javascript)
+  - [Contribuição](#contribuição)
+  - [Licença](#licença)
+
 ## Pré-requisitos
 
 Antes de começar, certifique-se de que sua máquina atenda aos seguintes pré-requisitos:
