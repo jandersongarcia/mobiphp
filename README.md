@@ -274,6 +274,8 @@ echo $resultDelete;
 
 Certifique-se de substituir `'nome_tabela'`, `'campo1'`, `'campo2'`, etc., com os valores correspondentes ao seu banco de dados.
 
+Todas as respostas desses métodos são fornecidas em formato JSON para facilitar a manipulação dos dados por outras linguagens, como o JavaScript.
+
 ## Métodos Disponíveis
 
 A seguir, estão os métodos disponíveis no módulo de CRUD:
