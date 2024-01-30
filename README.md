@@ -198,6 +198,112 @@ composer mobi-create-module nome-do-modulo
       - **Novomodulo.controller.php**: scripts de controle
       - **Novomodulo.modal.php**: página de modal
 
+## Módulo de CRUD
+O CRUD (Create, Read, Update, Delete) do MobiPHP facilita a manipulação de dados em um banco de dados MySQL ou PostgreSQL. Este, fornece métodos para realizar estas operações de forma eficiente, eliminando a necessidade de escrever consultas SQL manualmente.
+
+### Configuração do Banco de Dados
+
+Antes de utilizar o módulo de CRUD, é necessário configurar as informações do banco de dados no arquivo `database.php` dentro da pasta `config`. Certifique-se de fornecer as informações corretas de acordo com o banco de dados que você está utilizando (MySQL ou PostgreSQL).
+
+```php
+// Exemplo de configuração para MySQL
+'app_data_type' => 'mysql',
+'mysql' => [
+    'driver' => 'mysql',
+    'host' => 'localhost',
+    'port' => '3306',
+    'database' => 'mobidb',
+    'username' => 'root',
+    'password' => '',
+    'charset' => 'utf8mb4',
+    'collation' => 'utf8mb4_unicode_ci',
+],
+
+// Exemplo de configuração para PostgreSQL
+'app_data_type' => 'pgsql',
+'pgsql' => [
+    'driver' => 'pgsql',
+    'host' => 'localhost',
+    'port' => '5432',
+    'database' => '',
+    'username' => '',
+    'password' => '',
+    'charset' => 'utf8',
+    'schema' => 'public',
+],
+```
+
+## Exemplo de Uso
+
+A seguir, apresentamos um exemplo didático de como utilizar o módulo de CRUD em um ambiente MySQL. O mesmo princípio se aplica ao PostgreSQL, ajustando apenas a configuração do banco de dados.
+
+```php
+<?php
+use Sql\MySQL;
+
+class ExemploCRUD extends MySQL
+{
+    // Métodos CRUD podem ser implementados aqui
+}
+
+// Exemplo de uso do CRUD MySQL
+$crud = new ExemploCRUD();
+
+// Inserir um novo registro
+$dataToInsert = ['campo1' => 'valor1', 'campo2' => 'valor2'];
+$resultInsert = $crud->insert('nome_tabela', $dataToInsert);
+echo $resultInsert;
+
+// Obter todos os registros
+$resultSelectAll = $crud->getAll('nome_tabela');
+echo $resultSelectAll;
+
+// Obter um registro por ID
+$resultSelectById = $crud->getById('nome_tabela', 'id', 1);
+echo $resultSelectById;
+
+// Atualizar um registro
+$dataToUpdate = ['campo1' => 'novo_valor1', 'campo2' => 'novo_valor2'];
+$resultUpdate = $crud->update('nome_tabela', $dataToUpdate, 1);
+echo $resultUpdate;
+
+// Excluir um registro
+$resultDelete = $crud->delete('nome_tabela', 1);
+echo $resultDelete;
+```
+
+Certifique-se de substituir `'nome_tabela'`, `'campo1'`, `'campo2'`, etc., com os valores correspondentes ao seu banco de dados.
+
+## Métodos Disponíveis
+
+A seguir, estão os métodos disponíveis no módulo de CRUD:
+
+### `insert($table, $data)`
+
+Insere dados em uma tabela e retorna um JSON indicando sucesso ou falha na inserção.
+
+### `getAll($table)`
+
+Obtém todos os registros de uma tabela e retorna um JSON.
+
+### `getById($table, $primaryKey, $id)`
+
+Obtém um registro por ID de uma tabela e retorna um JSON.
+
+### `update($table, $data, $id)`
+
+Atualiza um registro em uma tabela e retorna um JSON indicando sucesso ou falha na atualização.
+
+### `delete($table, $id)`
+
+Exclui um registro de uma tabela e retorna um JSON indicando sucesso ou falha na exclusão.
+
+### `query($sql, $params)`
+
+Executa uma consulta SQL personalizada e retorna os resultados em JSON.
+
+Lembre-se de adaptar os exemplos conforme necessário para atender aos requisitos específicos da sua aplicação. Este é apenas um guia inicial para o uso do módulo de CRUD no MobiPHP. Para obter informações detalhadas sobre outros métodos ou personalizações avançadas, consulte a documentação oficial do MobiPHP.
+
 ## Temas Prontos
 
 - A criação de algumas telas como login e painel adminstrativo são padrões em todo o sistema. Pensando nestas situações, o Mobi-PHP tem alguns temas que podem ser instalados em sua aplicação apenas com um comando.
