@@ -274,6 +274,55 @@ echo $resultDelete;
 
 Certifique-se de substituir `'nome_tabela'`, `'campo1'`, `'campo2'`, etc., com os valores correspondentes ao seu banco de dados.
 
+### Exemplo de Uso com Consulta SQL Personalizada
+
+Para realizar uma consulta SQL personalizada simples, você pode utilizar o método `query` do módulo de CRUD do MobiPHP. Vamos exemplificar a execução de uma consulta SELECT básica.
+
+```php
+<?php
+
+// Consulta SQL simples
+$sqlQuerySimples = "SELECT * FROM tabela_exemplo WHERE coluna_condicao = ?";
+$queryParamsSimples = ['valor_condicao'];
+
+$resultSimples = $crud->query($sqlQuerySimples, $queryParamsSimples);
+
+// Exibir os resultados da consulta SQL simples
+echo $resultSimples;
+```
+
+Este exemplo executa uma consulta SQL simples utilizando um WHERE com um parâmetro de condição.
+
+### Consultas SQL Mais Complexas
+
+Para consultas mais complexas que envolvem INNER JOIN, ORDER BY e GROUP BY, você pode construir de acordo com suas necessidades. A seguir, apresentamos um exemplo que combina esses elementos.
+
+```php
+<?php
+
+// Consulta SQL complexa com INNER JOIN, ORDER BY e GROUP BY
+$sqlQueryComplexa = "SELECT usuarios.nome AS nome_usuario, COUNT(pedidos.id) AS total_pedidos
+                     FROM usuarios
+                     INNER JOIN pedidos ON usuarios.id = pedidos.id_usuario
+                     WHERE usuarios.cidade = ?
+                     GROUP BY usuarios.nome
+                     ORDER BY total_pedidos DESC";
+
+$queryParamsComplexa = ['Sao Paulo'];
+
+$resultComplexa = $crud->query($sqlQueryComplexa, $queryParamsComplexa);
+
+// Exibir os resultados da consulta SQL complexa
+echo $resultComplexa;
+```
+
+Neste exemplo:
+
+- Realizamos um INNER JOIN entre as tabelas `usuarios` e `pedidos`.
+- Utilizamos um WHERE para filtrar por uma condição específica (cidade dos usuários).
+- Aplicamos um GROUP BY para contar o total de pedidos por usuário.
+- Utilizamos ORDER BY para ordenar os resultados pelo total de pedidos em ordem decrescente.
+
 Todas as respostas desses métodos são fornecidas em formato JSON para facilitar a manipulação dos dados por outras linguagens, como o JavaScript.
 
 ## Métodos Disponíveis
